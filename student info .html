@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Info</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: rgb(242, 240, 238);
+      padding: 20px;
+    }
+    #output {
+      background: rgb(255, 255, 255);
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      box-shadow: 0 0 10px greenyellow;
+      line-height: 1.6;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: rgb(43, 235, 223);
+    }
+  </style>
+</head>
+<body>
+  <h2>🎓 Student Info</h2>
+  <button onclick="ShowStudent()">Show Info</button>
+  <div id="output"></div>
+
+  <script>
+    const student = {
+      name: "Mane Vara",
+      scores: [85, 90, 99],
+      address: {
+        city: "Hyderabad"
+      }
+    };
+
+    const getAverage = (...scores) => {
+      let total = 0;
+      for (const score of scores) {
+        total += score;
+      }
+      return (total / scores.length).toFixed(2);
+    };
+
+    const ShowStudent = () => {
+      const { name: studentName, scores, address } = student;
+      const city = address?.city || "Unknown";
+      const average = getAverage(...scores);
+
+      const outputHTML = `
+        <strong>Name:</strong> ${studentName} <br>
+        <strong>City:</strong> ${city} <br>
+        <strong>Average Score:</strong> ${average}
+      `;
+
+      document.getElementById("output").innerHTML = outputHTML;
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Supermarket Bill Calculator</title>
+  <style>
+    body {
+      background-color: #e0f7fa;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00796b;
+    }
+
+    .container {
+      background-color: #ffffff;
+      max-width: 400px;
+      margin: auto;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    label, input {
+      display: block;
+      margin: 10px 0 5px;
+      font-size: 16px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      background-color: #00796b;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #004d40;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 17px;
+      font-weight: bold;
+      color: #004d40;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🛒 Supermarket Bill </h2>
+
+  <div class="container">
+    <label for="milkQty">Milk (₹50/litre):</label>
+    <input type="number" id="milkQty" placeholder="Enter litres" min="0">
+
+    <label for="fruitQty">Fruits (₹80/kg):</label>
+    <input type="number" id="fruitQty" placeholder="Enter kilograms" min="0">
+
+    <button onclick="generateBill()">Calculate Bill</button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    // Function declaration using parameters and return value
+    function calculateBill(milkQty, fruitQty) {
+      const milkPrice = 50;
+      const fruitPrice = 80;
+
+      let milkCost = milkQty * milkPrice;
+      let fruitCost = fruitQty * fruitPrice;
+      let total = milkCost + fruitCost;
+
+      return {
+        milkCost: milkCost,
+        fruitCost: fruitCost,
+        total: total
+      };
+    }
+
+    function generateBill() {
+      let milk = parseFloat(document.getElementById("milkQty").value);
+      let fruit = parseFloat(document.getElementById("fruitQty").value);
+      let result = document.getElementById("result");
+
+      if (isNaN(milk)) milk = 0;
+      if (isNaN(fruit)) fruit = 0;
+
+      const bill = calculateBill(milk, fruit);
+
+      result.innerHTML = `
+        🥛 Milk Cost: ₹${bill.milkCost.toFixed(2)} <br>
+        🍎 Fruit Cost: ₹${bill.fruitCost.toFixed(2)} <br><br>
+        💰 <b>Total Bill: ₹${bill.total.toFixed(2)}</b>
+      `;
+    }
+  </script>
+
+</body>
+</html>

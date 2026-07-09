@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Restaurants</title>
+</head>
+<body>
+    <h1>Top Restaurants</h1>
+    <button onclick="loadRestaurants()">Load Restaurants</button>
+    <div id="restaurantsList" style="margin-top: 20px;"></div>
+
+    <script>
+        const restaurantData = [
+            { id: 1, name: "The Spice Route", cuisine: "Indian", rating: 4.5 },
+            { id: 2, name: "Pasta House", cuisine: "Italian", rating: 4.0 },
+            { id: 3, name: "Sushi World", cuisine: "Japanese", rating: 3.9 },
+            { id: 4, name: "Burger Hub", cuisine: "American", rating: 4.2 },
+        ];
+
+        function fetchRestaurants() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(restaurantData);
+                }, 2000);
+            });
+        }
+
+        async function loadRestaurants() {
+            const listDiv = document.getElementById("restaurantsList");
+            listDiv.innerHTML = "Loading restaurants...";
+
+            try {
+                const restaurants = await fetchRestaurants();
+                let output = "<ul>";
+                restaurants.forEach(r => {
+                    output += `<li><strong>${r.name}</strong> - ⭐${r.cuisine} - ${r.rating}</li>`;
+                });
+                output += "</ul>";
+                listDiv.innerHTML = output;
+            } catch (error) {
+                listDiv.innerHTML = `<p style="color:red;">Error loading data</p>`;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-size: arial;
+            background-color: aqua;
+            margin: 0;
+            padding: 0;
+
+        }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 50px;
+            padding: 20px;
+            background-color: chartreuse;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px burlywood;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><center>📱Electronic Product Manager</center></h1>
+    <input type="text" id="Product Name" placeholder=" Enter Product Name">
+    <input type="Price" id="number" placeholder="Enter  Amount"><br><br>
+    <button onclick="addBillEnd()">Add Product(push)</button>
+     <button onclick="addBillStart()">Add Priority(unshift)</button>
+    <button onclick="removeLast()">Remove Last(pop)</button>
+    <button onclick="removeFirst()">Remove First(shift)</button>
+    <h3>All Product</h3>
+    <ul id="output"></ul>
+
+    
+</body>
+</html>
