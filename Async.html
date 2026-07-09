@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: rgb(231, 230, 233);
+      padding: 20px;
+    }
+
+    .card {
+      background: wheat;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 400px;
+      box-shadow: 0 0 10px gray;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Async User Info</title>
+</head>
+<body>
+  <center><div class="card">
+    <h1>Async User Info Loader</h1>
+    <div id="userInfo">Click to load user...</div>
+    <button onclick="loadUser()">Load User</button>
+    <button onclick="stopLoading()">Stop Timer</button>
+  </div></center>
+
+  <script>
+    let intervalId;
+
+    function startTimer() {
+      const userDiv = document.getElementById("userInfo");
+      let dots = '';
+      intervalId = setInterval(() => {
+        dots = dots.length >= 3 ? '' : dots + '.';
+        userDiv.textContent = `Loading${dots}`;
+      }, 500);
+    }
+
+    function stopLoading() {
+      clearInterval(intervalId);
+    }
+
+    async function fetchUserData() {
+      const randomUser = Math.floor(Math.random() * 10) + 1;
+      const url = `https://jsonplaceholder.typicode.com/users/${randomUser}`;
+      const simulateError = Math.random() < 0.2;
+
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          if (simulateError) {
+            reject("API Error: Failed to fetch user");
+          } else {
+            fetch(url)
+              .then(res => res.json())
+              .then(data => resolve(data))
+              .catch(() => reject("Network error"));
+          }
+        }, 1500);
+      });
+    }
+
+    async function loadUser() {
+      startTimer();
+      const userDiv = document.getElementById("userInfo");
+      try {
+        const user = await fetchUserData();
+        stopLoading();
+        userDiv.innerHTML = `
+          <strong>Name:</strong> ${user.name}<br>
+          <strong>Email:</strong> ${user.email}<br>
+          <strong>City:</strong> ${user.address.city}
+        `;
+      } catch (error) {
+        stopLoading();
+        userDiv.innerHTML = `<span style="color:red">${error}</span><br>
+        <button onclick="loadUser()">Retry</button>`;
+      }
+    }
+  </script>
+</body>
+</html>

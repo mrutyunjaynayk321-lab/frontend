@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class vehicle {
+            constructor (brand) {
+                this.brand = brand;
+            }
+            display () {
+                console.log(`Brand: ${this.brand}`);
+            }
+
+        }
+        class Bike extends vehicle {
+            constructor(brand, model){
+                super(brand);
+                this.model = model;
+            }
+            show() {
+                console.log(`Model: ${this.model}`);
+            }
+
+        }
+        const myBike = new Bike ("KTM", "R15");
+        myBike.display();
+        myBike.show();
+    </script>
+    
+</body>
+</html>

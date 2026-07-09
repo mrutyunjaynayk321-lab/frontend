@@ -1,0 +1,158 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Reference</title>
+    <style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #d8ab2f;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.featured {
+    padding: 20px;
+}
+
+.playlist-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.playlist-card {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #140eb0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(171, 44, 234, 0.1);
+    width: calc(33.33% - 20px);
+}
+
+.playlist-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.charts {
+    padding: 20px;
+}
+
+.charts ol {
+    list-style {
+        none;
+    }
+
+    margin: 0;
+    padding: 0;
+}
+
+.charts li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.charts span {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+footer {
+    background-color: #14d3b0;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    clear: both;
+}
+
+
+</style>
+</head>
+<body>
+    <div class="dashboard">
+    <div class="header">
+        <header>
+            <h1>🎵Jio Seven Music</h1>
+    </header>
+</div>
+<center><div class="logo">Spotify Search 🎧</div></center>
+
+  <center><div class="search-box">
+    <input type="text" placeholder="Search for songs, artists, albums...">
+  </div></center>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="https://open.spotify.com/">Home</a></li>
+                <li><a href="https://support.spotify.com/us/article/search/>Search">Search</a></li>
+                <li><a href="https://support.spotify.com/us/article/your-library/">Your Library</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="featured">
+            <h2>Featured Playlists</h2>
+            <div class="playlist-container">
+                <div class="playlist-card">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.6lKwbPY7thtsJC9kByJ0VQHaF6&pid=Api&P=0&h=180" alt="Playlist 1" width="10" height="200">
+                    <h3>Playlist 1</h3>
+                    <p>Discover new music</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.-Iiv4NUtK6aC7M9s2_cevgHaHa&pid=Api&P=0&h=180" alt="Playlist 2">
+                    <h3>Playlist 2</h3>
+                    <p>Relax and unwind</p>
+                </div>
+                <div class="playlist-card">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.SBA_INwZ3RBTPfzdvsh57QHaEK&pid=Api&P=0&h=180" alt="Playlist 3">
+                    <h3>Playlist 3</h3>
+                    <p>Workout motivation</p>
+                </div>
+            </div>
+        </section>
+        <section class="charts">
+            <h2>Top Charts</h2>
+            <ol>
+                <li><span>1.</span> Song 1</li>
+                <li><span>2.</span> Song 2</li>
+                <li><span>3.</span> Song 3</li>
+            </ol>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Spotify Reference</p>
+    </footer>
+</body>
+</html>
+
+
+

@@ -1,0 +1,123 @@
+✅ Full HTML + JavaScript Code – Train Berth Type Selector:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Train Berth Seat Type Selector</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #b7ec19;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .logo {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      color: #2a2a2a;
+      margin-bottom: 15px;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 200px;
+      margin-bottom: 10px;
+      border: 2px solid #12ed20;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    button:hover {
+      background-color: #cfd8df;
+    }
+
+    #output {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #49c410;
+      font-weight: bold;
+    }
+
+    .arrow {
+      font-size: 32px;
+      color: #555;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🚆 Train Logo -->
+  <img src="https://tse4.mm.bing.net/th/id/OIP.El74SD51tiVGec50RLcMRwHaIB?pid=Api&P=0&h=180" 
+       alt="Train Logo" class="logo" />
+
+  <h2>🚆Train Berth Seat Type Selector</h2>
+
+  <p class="arrow">🚆 ⇄ 🚆</p>
+
+  <input type="number" id="seat" placeholder="Enter seat number (1-72)">
+  <button onclick="checkBerth()">Check Berth</button>
+
+  <p id="output"></p>
+
+  <script>
+    function checkBerth() {
+      let seat = Number(document.getElementById("seat").value);
+      let berth = "";
+
+      
+      if (seat < 1 || seat > 72) {
+        berth = "⚠️ Invalid seat number. Please enter between 1 and 72.";
+      } else {
+        
+        let mod = seat % 8;
+
+        switch (mod) {
+          case 1:
+          case 4:
+            berth = "🛏️ Lower Berth";
+            break;
+          case 2:
+          case 5:
+            berth = "🛏️ Middle Berth";
+            break;
+          case 3:
+          case 6:
+            berth = "🛏️ Upper Berth";
+            break;
+          case 7:
+            berth = "🛏️ Side Lower Berth";
+            break;
+          case 0:
+            berth = "🛏️ Side Upper Berth";
+            break;
+          default:
+            berth = "Invalid Berth";
+        }
+
+      }
+
+      
+      document.getElementById("output").innerText = berth;
+      console.log("Seat " + seat + " → " + berth);
+      
+    }
+  </script>
+
+</body>
+</html>

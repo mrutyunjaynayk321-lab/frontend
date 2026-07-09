@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Profile Card Generator</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #ee8585;
+      padding: 20px;
+    }
+
+    form {
+      background: #63a5ce;
+      padding: 15px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    input, textarea, select, button {
+      display: block;
+      margin: 10px auto;
+      padding: 8px;
+      width: 250px;
+    }
+
+    #cardContainer, #previewContainer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      width: 250px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin: 10px auto;
+    }
+
+    .square { border-radius: 0; }
+    .rounded { border-radius: 15px; }
+    .circle { border-radius: 50%; }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.9);}
+      to {opacity: 1; transform: scale(1);}
+    }
+  </style>
+</head>
+<body>
+  <h2>Profile Card Generator</h2>
+  <form id="profileForm">
+    <input type="text" id="name" placeholder="Enter Name" required>
+    <textarea id="bio" placeholder="Enter Bio" required></textarea>
+    <input type="file" id="image" accept="image/*">
+    <select id="borderStyle">
+      <option value="square">Square</option>
+      <option value="rounded">Rounded</option>
+      <option value="circle">Circle</option>
+    </select>
+    <button type="button" onclick="previewCard()">Preview</button>
+    <button type="submit">Generate Card</button>
+  </form>
+
+  <div id="previewContainer"></div>
+  <div id="cardContainer"></div>
+
+  <script>
+     const form = document.getElementById('profileForm');
+  const cardContainer = document.getElementById('cardContainer');
+  const previewContainer = document.getElementById('previewContainer');
+
+  function previewCard() {
+    const data = getFormData();
+    if (!data) return;
+
+    previewContainer.innerHTML = '';
+    previewContainer.appendChild(createCard(data));
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+
+    const cards = JSON.parse(localStorage.getItem('cards') || '[]');
+
+    
+    if (cards.length >= 3) {
+      alert("You can only create up to 3 cards.");
+      return;
+    }
+
+    const data = getFormData();
+    if (!data) return;
+
+    cards.push(data);
+    localStorage.setItem('cards', JSON.stringify(cards));
+
+    cardContainer.appendChild(createCard(data));
+    previewContainer.innerHTML = '';
+    form.reset();
+  });
+
+  function getFormData() {
+    const name = document.getElementById('name').value;
+    const bio = document.getElementById('bio').value;
+    const border = document.getElementById('borderStyle').value;
+    const file = document.getElementById('image').files[0];
+
+    if (!name || !bio) {
+      alert("Please fill in both Name and Bio!");
+      return null;
+    }
+
+    return {
+      name,
+      bio,
+      border,
+      image: file ? URL.createObjectURL(file) : 'https://via.placeholder.com/100'
+    };
+  }
+
+  function createCard(data) {
+    const card = document.createElement('div');
+    card.className = 'card';
+
+    const img = document.createElement('img');
+    img.src = data.image;
+    img.className = data.border;
+
+    card.innerHTML = `<h3>${data.name}</h3><p>${data.bio}</p>`;
+    card.prepend(img);
+
+    return card;
+  }
+
+  window.onload = () => {
+    const saved = JSON.parse(localStorage.getItem('cards') || '[]');
+    saved.forEach(data => cardContainer.appendChild(createCard(data)));
+  };
+
+
+  </script>
+</body>
+</html>

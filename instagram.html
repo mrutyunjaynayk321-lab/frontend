@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Account</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e09090;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background-color: #f1ecec;
+      padding: 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(214, 239, 225, 0.05);
+      width: 340px;
+      text-align: center;
+    }
+
+    .login-box h2 {
+      color: #060101;
+      margin-bottom: 25px;
+    }
+
+    .login-box input[type="text"],
+    .login-box input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #555;
+      border-radius: 5px;
+      background-color: #f4e2e2;
+      color: #0f0e0e;
+    }
+
+    .login-box .error {
+      color: #ff4c4c;
+      font-size: 14px;
+      height: 18px;
+    }
+
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background-color: #3897f0;
+      color: #2c2929;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .login-box button:hover {
+      background-color: #2a76c8;
+    }
+
+    #successMessage {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #00ff99;
+    }
+    .login-box img{
+      border-radius: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <img src="https://tse3.mm.bing.net/th/id/OIP.x1p5S60m-6BTAm-vFeNyMgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" width="50px"height="50px">
+    <h2>Instagram Account</h2>
+    <form id="signupForm">
+      <input type="text" id="name" placeholder="Full Name" />
+      <div class="error" id="nameError"></div>
+
+      <input type="text" id="username" placeholder="Username (lowercase only)" />
+      <div class="error" id="usernameError"></div>
+
+      <input type="password" id="password" placeholder="Password" />
+      <div class="error" id="passwordError"></div>
+
+      <button type="submit">Create Account </button>
+    </form>
+    <div id="successMessage"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('signupForm');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      let isValid = true;
+      const name = document.getElementById("name");
+      const username = document.getElementById("username");
+      const password = document.getElementById("password");
+
+      const nameValue = name.value.trim();
+      const usernameValue = username.value.trim();
+      const passwordValue = password.value.trim();
+
+      document.getElementById('nameError').textContent = '';
+      document.getElementById('usernameError').textContent = '';
+      document.getElementById('passwordError').textContent = '';
+      document.getElementById('successMessage').textContent = '';
+
+      if (nameValue === '') {
+        document.getElementById('nameError').textContent = 'Name cannot be empty';
+        isValid = false;
+      }
+
+      if (usernameValue === '') {
+        document.getElementById('usernameError').textContent = 'Username cannot be empty';
+        isValid = false;
+      } else if (usernameValue !== usernameValue.toLowerCase()) {
+        document.getElementById('usernameError').textContent = 'Username must be lowercase';
+        isValid = false;
+      }
+
+      if (passwordValue.length < 6) {
+        document.getElementById('passwordError').textContent = 'Password must be at least 6 characters';
+        isValid = false;
+      }
+
+      if (isValid) {
+        document.getElementById('successMessage').textContent =
+          `Welcome ${nameValue}! Your account has been created successfully`;
+      }
+    });
+  </script>
+</body>
+</html>
