@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <style>
+        body{
+            margin: 0;
+            font-family: sans-serif;
+            background-color: rgb(113, 216, 216);
+        }
+        .dashbord {
+            display: grid;
+            grid-template-areas: 
+            "Header header"
+            "sidebar movies"
+            "footer footer";
+        
+
+        grid-template-rows: 70px 1fr 50px;
+        grid-template-columns: 220px 1fr;
+        gap: 10px;
+        height: 100vh;
+        padding: 10px;
+        box-sizing: border-box;
+        }
+        header {
+            grid-area: header;
+            background: rgb(190, 213, 62);
+            color: aqua;
+            display: flex;
+            padding: 10px;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+         aside {
+            grid-area: sidebar;
+            background-color: coral;
+            color: blue;
+            padding: 20px;
+         }
+         .ticket-card {
+            background-color: #9b1246;
+            padding: 20px;
+            border: 1px solid #10ed65;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         }
+        
+        .ticket-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px 10px  0 0;
+        }
+         .ticket-card h2 {
+            margin-top: 10px;
+         }
+        
+        .ticket-card button {
+            background-color: #2f7b32;
+            color: #19fbe9;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        footer{
+            grid-area: footer;
+            background: rgb(11, 211, 14);
+            color: rgb(229, 19, 134);
+           text-align: center;
+           line-height: 50px;
+        }
+        .main {
+      grid-area: main;
+      display: grid;
+      grid-template-areas:
+        "form showlist";
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+      padding: 10px;
+      background: #e2721d;
+        }
+
+    .form {
+      grid-area: form;
+      background: rgb(178, 62, 189);
+      padding: 20px;
+      border-radius: 8px;
+    }
+     input, select, button {
+      width: 100%;
+      padding: 8px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #b7e938;
+     }
+
+    button {
+      background-color: #1e88e5;
+      color: rgb(178, 68, 68);
+      border: none;
+      cursor: pointer;
+    }
+     ul {
+      padding-left: 20px;
+     }
+
+    li {
+      margin-bottom: 8px;
+    }
+.movie-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.movie-card {
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.item {
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.item {
+    padding: 20px;
+    border: 1px solid #ddd;
+}
+
+
+
+    </style>
+</head>
+<body>
+     <div class="dashboard">
+    <div class="header">
+        <header>
+            <h1>Ticket Booking Dashboard</h1>
+    </header>
+</div>
+
+    <div class="sidebar">
+      <h3>Menu</h3>
+      <ul>
+        <li>Home</li>
+        <li>Bookings</li>
+        <li>Shows</li>
+        <li>Profile</li>
+        
+      </ul>
+    </div>
+    <main>
+            <H2>Now Showing</H2>
+            <div class="movie">
+                 
+            <img src="https://tse1.mm.bing.net/th?id=OIP.I5TAs76YeeCFEzqslzPh3AHaEK&pid=Api&rs=1&c=1&qlt=95&w=203&h=114" alt="Avengers" width="100">
+                <h4>Pushpa: Drama</h4>
+                <p>Action  | 3h 2m </p>
+                </div>
+                <div class="movie">
+                     <img src="https://tse4.mm.bing.net/th?id=OIP.VM7pW4WstAbreAVwrwK3awHaEK&pid=Api&P=0&h=180" alt="Premalo" width="100">
+                    <h4>Premalo: Love</h4>
+                    <p>Sci-fi | 2h 27m</p>
+
+                </div>
+                <div class="movie">
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.33w0ApXHAIHgl-4kmYUe_QHaEK&pid=Api&P=0&h=180" alt="KGF" width="100">
+                    <h4>KGF: fighting </h4>
+                    <p>Musical | 2h 00m</p>
+                    
+                </div>
+                <div class="movie">
+                    <img src="https://tse1.mm.bing.net/th?id=OIP.FiNEYV9es4wxD0HDpgLlDQHaEK&pid=Api&P=0&h=180" alt="Thandel" width="100">
+                    <h4>Thandel: Romance</h4>
+                    <p>Romance | 3h 45m</p>
+                    
+                </div>
+            </div>
+        </main>
+    <div class="main">
+      <div class="form">
+        <h2><center>Book a Ticket</center></h2>
+        <label>Name</label>
+        <input type="text" placeholder="Enter your name" />
+        <label>Show</label>
+        <select>
+          <option>Pushpa</option>
+          <option>KGF</option>
+          <option>Premalo</option>
+          <option>Thandel</option>
+        </select>
+        <label>Date</label>
+        <input type="date" />
+        <button>Book Now</button>
+      </div>
+<div class="showlist">
+        <h2>Available Shows</h2>
+        <ul>
+          <li>Pushpa - 7:00 PM</li>
+          <li>KGF - 6:30 PM</li>
+          <li>Premalo - 8:00 PM</li>
+          <li>Thandel -9:00 PM</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer">© 2025 Theater Booking Inc.</div>
+  </div>
+
+
+</body>
+</html>

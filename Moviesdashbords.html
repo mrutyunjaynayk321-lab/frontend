@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies Dashboard</title>
+    <style>
+        body{
+            margin: 0;
+            font-family: sans-serif;
+            background-color: rgb(225, 236, 236);
+        }
+        
+        main{
+            grid-area: main;
+            background: #d4db0b;
+            padding: 10px;
+
+        }
+        
+
+
+        
+        .dashbord {
+            display: grid;
+            grid-template-areas: 
+            "Header header"
+            "sidebar movies"
+            "footer footer";
+        
+        grid-template-rows: 70px 1fr 50px;
+        grid-template-columns: 220px 1fr;
+        gap: 10px;
+        height: 100vh;
+        padding: 10px;
+        box-sizing: border-box;
+        }
+        header {
+            grid-area: header;
+            background: rgb(190, 213, 62);
+            color: aqua;
+            display: flex;
+            padding: 10px;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+        aside {
+            grid-area: sidebar;
+            background-color: coral;
+            color: blue;
+            padding: 20px;
+        }
+        main{
+            grid-area: movies;
+            background-color: aliceblue;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .movie {
+            background-color: brown;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+
+        }
+        footer{
+            grid-area: footer;
+            background: rgb(11, 211, 14);
+            color: rgb(229, 19, 134);
+           text-align: center;
+           line-height: 50px;
+        }
+
+        </style>
+        </head>
+<body>
+    <div class="dashbord">
+       
+        <header>
+            Movies Dashboard
+        </header>
+        <aside>
+            <h2><center>Genres</center></h2>
+            <ul>
+                <li>Action</li>
+                <li>Drama</li>
+                <li>Comedy</li>
+                <li>Romance</li>
+                <li>Horror</li>
+            </ul>
+        </aside>
+        <main>
+            <H2>Now Showing</H2>
+            <div class="movie">
+                 
+            <img src="https://tse1.mm.bing.net/th?id=OIP.CogJrHSc6JTw7w_wcLwr2gHaEo&pid=Api&P=0&h=180" alt="Avengers" width="100">
+                <h4>Avengers: Endgame</h4>
+                <p>Action  | 3h 2m </p>
+                </div>
+                <div class="movie">
+                     <img src="https://tse2.mm.bing.net/th?id=OIP.8Y5kGULSRHGderhe8JRF2gHaEK&pid=Api&P=0&h=180" alt="Spiderman" width="100">
+                    <h4>Spiderman</h4>
+                    <p>Sci-fi | 2h 27m</p>
+
+                </div>
+                <div class="movie">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.T0nlTnfDBpRz9XEePvHQsQHaEK&pid=Api&P=0&h=180" alt="La La Land" width="100">
+                    <h4>La La Land </h4>
+                    <p>Musical | 2h 00m</p>
+                    
+                </div>
+                <div class="movie">
+                    <img src="https://tse2.mm.bing.net/th?id=OIP.9VmrWk7uYdnsYNr3GTc41gHaEK&pid=Api&P=0&h=180" alt="Titanic">
+                    <h4>Titanic</h4>
+                    <p>Romance | 3h 45m</p>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+       <footer>
+        <p>&copy; 2025 Movie  Dashboar . All Right Reserved!</p>
+    </footer>
+    
+
+    
+</body>
+</html>

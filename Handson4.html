@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation button with pseudo-classes </title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: aqua;
+            padding: 30px;
+            text-align: center;
+
+        }
+        .nav{
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .nav button{
+            padding: 12px 25px;
+            font-size: 16px;
+            border: 2px solid #f0a338;
+            border-radius: 8px;
+            background-color: rgb(198, 243, 18);
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+        }
+      .nav button:hover:not(.disable) {
+        background-color: blueviolet;
+        border-color: chocolate;
+      }
+      .nav button:active {
+        transform: scale(0.95);
+        background-color: beige;
+
+      }
+      .nav button:first-child {
+        background-color: rgb(84, 224, 177);
+        border-color: rgb(203, 236, 20);
+
+      }
+      .nav button:nth-child(3n){
+        border-color: blueviolet;
+
+      }
+      .nav button.disabled {
+        background-color: cadetblue;
+        color: rgb(19, 113, 196);
+        cursor: not-allowed;
+
+      }
+      h2 {
+        margin-bottom: 25px;
+
+      }
+        </style>
+</head>
+<body>
+    <h1><center>Main Navigation</center></h1>
+    <div class="nav">
+        <button>Home</button>
+           <button>About</button>
+           <button class="disable">Contact</button>
+
+
+    </div>
+    
+</body>
+</html>

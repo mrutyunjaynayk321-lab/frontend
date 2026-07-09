@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera App</title>
+  <style>
+    video, canvas {
+      width: 300px;
+      height: 225px;
+      border: 1px solid #18d8b8;
+      margin: 10px;
+    }
+
+    .filter {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Camera With Filters</h1>
+
+  <video id="video" autoplay playsinline></video>
+
+  <div class="filters">
+    <select id="filter">
+      <option value="none">None</option>
+      <option value="grayscale(100%)">Grayscale</option>
+      <option value="sepia(100%)">Sepia</option>
+      <option value="invert(100%)">Invert</option>
+      <option value="contrast(200%)">Contrast</option>
+    </select>
+    <br>
+    <button onclick="capture()">📸 Capture Photo</button>
+  </div>
+
+  <canvas id="canvas"></canvas>
+  <br>
+  <a id="download" download="capture.png">⬇️ Download Image</a>
+
+  <script>
+    const video = document.getElementById('video');
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+    const filter = document.getElementById('filter');
+    const download = document.getElementById('download');
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+      .then(stream => {
+        video.srcObject = stream;
+      })
+      .catch(err => console.error("Camera Error:", err));
+
+    filter.addEventListener('change', () => {
+      video.style.filter = filter.value;
+    });
+
+    function capture() {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      context.filter = filter.value;
+      context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      download.href = canvas.toDataURL();
+    }
+  </script>
+</body>
+</html>

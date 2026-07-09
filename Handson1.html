@@ -1,0 +1,123 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+         body{
+            margin: 0;
+            font-family: sans-serif;
+        }
+        /*Container layout */
+         .container {
+            display: flex;
+            justify-content: center;
+            background-color: aquamarine;
+       }
+        .container div {
+            background-color: teal;
+            color: aliceblue;
+            padding: 20px;
+            margin: 5px;
+        }
+        .main-centnt {
+            display: flex;
+            flex: 1;
+            flex-wrap: wrap;
+        }
+        .sidebar{
+            background-color: aqua;
+            color: aliceblue;
+            width: 200px;
+            padding: 20px;
+        }
+        .padding-box-example{
+            width: 20px;
+            height: 100;
+            padding: 50px;
+            background-color: lightblue;
+        }
+         footer{
+            font-size:  14px;
+
+        }
+        @media(max_width: 768px){
+            .main-centent {
+                flex-direction: column;
+
+            }
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1><center>Employee Registration Form</center></h1>
+        
+        <form>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="number" id="phone" name="phone" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <select id="department" name="department">
+                    <option value="HR">CSE</option>
+                    <option value="AI&ML">AI&ML</option>
+                    <option value="DATA SCIENCE">DATA SCIENCE</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="designation">Designation:</label>
+                <input type="text" id="designation" name="designation" required><br><br>
+            </div>
+            <div class="form-group">
+                <label for="experience">Experience:</label>
+                <input type="number" id="experience" name="experience" required><br><br>
+            </div>
+            
+
+ <lable for="Choice your Language">Choice your Language:-</lable>
+ <section id="Choice your Language" name="Choice your Language"></section>
+ <div class="language-selector">
+		<select id="language" onchange="changeLanguage()">
+			<option value="English">English</option>
+			<option value="Telgu">Telgu</option>
+			<option value="odia">odia</option>
+			<option value="hindi">हिन्दी</option>
+			<option value="Bihari">Bihari</option>
+		</select>
+        <h3>Gander:-</h3>
+ <lable>
+  <input type="radio" name="gander" value="male">male
+ </lable>
+ <lable>
+  <input type="radio" name="gander" value="female">female
+ </lable>
+            <div class="form-group">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2025 Employee Registration Form . All Right Reserved</p>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+   

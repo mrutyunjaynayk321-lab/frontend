@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Facebook Sign Up</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e9ebee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .signup-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h2 {
+      text-align: center;
+      color: #1877f2;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .gender-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+
+    .gender-group label {
+      font-weight: normal;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-bottom: 5px;
+    }
+
+    button {
+      background-color: #42b72a;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #36a420;
+    }
+
+    .dob-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .dob-group select {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="signup-box">
+    <h2>Facebook Sign Up</h2>
+    <form id="signupForm">
+      <label>Full Name</label>
+      <input type="text" id="fname" />
+      <div class="error" id="fnameError"></div>
+
+      <label>Mobile No</label>
+      <input type="text" id="MNo" />
+      <div class="error" id="MnoError"></div>
+
+      <label>Email</label>
+      <input type="email" id="email" />
+      <div class="error" id="emailError"></div>
+
+      <label>Password</label>
+      <input type="password" id="password" />
+      <div class="error" id="passwordError"></div>
+
+      <label>Gender</label>
+      <div class="gender-group">
+        <label><input type="radio" name="gender" value="Male" /> Male</label>
+        <label><input type="radio" name="gender" value="Female" /> Female</label>
+        <label><input type="radio" name="gender" value="Other" /> Other</label>
+      </div>
+      <div class="error" id="genderError"></div>
+
+      <label>Date of Birth</label>
+      <div class="dob-group">
+        <select id="dayselect"><option value="">Day</option></select>
+        <select id="monthselect"><option value="">Month</option></select>
+        <select id="yearselect"><option value="">Year</option></select>
+      </div>
+      <div class="error" id="dobError"></div>
+
+      <button type="submit">Sign Up</button>
+    </form>
+    <div id="successMessage" style="margin-top:10px; color:green;"></div>
+  </div>
+
+  <script>
+    // Populate Day
+    const daySelect = document.getElementById('dayselect');
+    for (let i = 1; i <= 31; i++) {
+      const option = document.createElement('option');
+      option.value = i;
+      option.textContent = i;
+      daySelect.appendChild(option);
+    }
+
+    // Populate Month
+    const monthSelect = document.getElementById('monthselect');
+    const months = [
+      'January', 'February', 'March', 'April', 'May', 'June',
+      'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+    months.forEach((month, index) => {
+      const option = document.createElement('option');
+      option.value = index + 1;
+      option.textContent = month;
+      monthSelect.appendChild(option);
+    });
+
+    // Populate Year
+    const yearSelect = document.getElementById('yearselect');
+    const currentYear = new Date().getFullYear();
+    for (let y = currentYear; y >= 1900; y--) {
+      const option = document.createElement('option');
+      option.value = y;
+      option.textContent = y;
+      yearSelect.appendChild(option);
+    }
+
+    // Form validation
+    const form = document.getElementById('signupForm');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      let isValid = true;
+      const fname = document.getElementById('fname');
+      const MNo = document.getElementById('MNo');
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      const gender = document.querySelector('input[name="gender"]:checked');
+      const day = daySelect.value;
+      const month = monthSelect.value;
+      const year = yearSelect.value;
+
+      // Reset errors
+      document.getElementById('fnameError').textContent = '';
+      document.getElementById('MnoError').textContent = '';
+      document.getElementById('emailError').textContent = '';
+      document.getElementById('passwordError').textContent = '';
+      document.getElementById('genderError').textContent = '';
+      document.getElementById('dobError').textContent = '';
+      document.getElementById('successMessage').textContent = '';
+
+      if (fname.value.trim() === '') {
+        document.getElementById('fnameError').textContent = 'First name required';
+        isValid = false;
+      }
+
+      if (MNo.value.trim() === '') {
+        document.getElementById('MnoError').textContent = 'Mobile No required';
+        isValid = false;
+      }
+
+      if (email.value.trim() === '') {
+        document.getElementById('emailError').textContent = 'Email required';
+        isValid = false;
+      } else if (!email.value.includes('@')) {
+        document.getElementById('emailError').textContent = 'Invalid email format';
+        isValid = false;
+      }
+
+      if (password.value.length < 6) {
+        document.getElementById('passwordError').textContent = 'Password must be at least 6 characters';
+        isValid = false;
+      }
+
+      if (!gender) {
+        document.getElementById('genderError').textContent = 'Please select gender';
+        isValid = false;
+      }
+
+      if (day === '' || month === '' || year === '') {
+        document.getElementById('dobError').textContent = 'Complete date of birth required';
+        isValid = false;
+      }
+
+      if (isValid) {
+        document.getElementById('successMessage').textContent =
+          `Welcome ${fname.value}! Your Facebook account is created.`;
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>
