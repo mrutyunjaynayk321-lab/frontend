@@ -1,0 +1,94 @@
+Bank Dashboard
+Here's an example of a bank dashboard using HTML:
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #81d915;
+            border: 1px solid #8915d6;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(197, 230, 31, 0.1);
+        }
+        
+        .header {
+            background-color: #e7a3a3;
+            color: #f1e1e1;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .account-info {
+            margin-bottom: 20px;
+        }
+        
+        .transaction-history {
+            margin-bottom: 20px;
+        }
+        
+        .footer {
+            background-color: #e06060;
+            color: #5d4a4a;
+            padding: 10px;
+            text-align: center;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Bank Dashboard</h1>
+        </div>
+        <h2>Account Information</h2>
+        <div class="account-info">
+            <p>Account Number: 1234567890</p>
+            <p>Account Type: Checking</p>
+            <p>Balance: $1,000.00</p>
+        </div>
+        <h2>Transaction History</h2>
+        <div class="transaction-history">
+            <table border="4">
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Debit</th>
+                    <th>Credit</th>
+                    <th>Balance</th>
+                </tr>
+                <tr>
+                    <td>2022-01-01</td>
+                    <td>Deposit</td>
+                    <td>$0.00</td>
+                    <td>$1,000.00</td>
+                    <td>$1,000.00</td>
+                </tr>
+                <tr>
+                    <td>2022-01-05</td>
+                    <td>Withdrawal</td>
+                    <td>$500.00</td>
+                    <td>$0.00</td>
+                    <td>$500.00</td>
+                </tr>
+            </table>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 Bank Dashboard</p>
+        </div>
+    </div>
+</body>
+</html>
+
+
